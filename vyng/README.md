@@ -12,9 +12,9 @@ Solution:
 For this project, I looked at three 3rd party free solutions and one paid solution.  Two other solutions of creating your own could be used if needed.  JMeter came up the best as being free easy to setup, lots of documentation and able to do all API testing needs.  If JMeter didn't fit all the needs it was very easy to upgrade to Blazemeter using the JMeter setups.  See below for details.
 
 Free load testing using 3rd party applications.
-1. JMeter, https://jmeter.apache.org/, see JMeter Testing below for more info.
-2. ab http://httpd.apache.org/docs/2.2/programs/ab.html, 
-3. Tsung,http://tsung.erlang-projects.org/1/01/about/,
+1. JMeter, https://jmeter.apache.org/
+2. ab http://httpd.apache.org/docs/2.2/programs/ab.html
+3. Tsung,http://tsung.erlang-projects.org/1/01/about/
 
 Paid online solution
 
