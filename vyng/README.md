@@ -13,50 +13,53 @@ Free load testing using 3rd party applications.
 1. JMeter, https://jmeter.apache.org/, see JMeter Testing below for more info.
 2. ab http://httpd.apache.org/docs/2.2/programs/ab.html, 
 3. Tsung,http://tsung.erlang-projects.org/1/01/about/, 
-4. Siege
+Non Free solution
+Blazemeter
 
-Recommend Jmeter because easily setup for threads, timing, outputs, header info, https, stepping your requests and variables.  You can also connect it to a network of other computers to use there resources for testing as well.
-ab is more of a manual setup and doesn't have the GUI mode that JMeter does plus sends all the request in one big go.  
+Recommend JMeter because easily setup for threads, timing, outputs, header info, https, stepping your requests and variables.  You can also connect it to a network of other computers to use there resources for testing as well.
+ab is more of a manual setup but is quick to setup but doesn't have the functionality that Jmeter has.  Most people consider it not a full loading balancing solution but could be combined with catch scripting for more functionality.  
 Tsung(http://tsung.erlang-projects.org/,)
-Not only allows you to test HTTP but also can send queries to all of below:
-XMPP (Jabber)
-PostgreSQL
-MySQL
-LDAP
-AMQP
-MQTT
+Allows you to test HTTP and can send queries to XMPP (Jabber), PostgreSQL, MySQL, LDAP, AMQP, and MQTT
 but hasn't been used as much as JMeter and has significantly less documentation.
-
+BlazeMeter 
+Online solution, https://www.blazemeter.com/
+Seems to have everything very easy to setup.  Runs a little slow but might be a good solution after setting up Jmeter if that is not enough for the site.
 
 JMeter Testing
 See the jmx file in the JMeter folder for some apis setup.
 See the data folder for csv output of runs
 To run install jmeter on a mac use these instructions:
 brew install jmeter
-To run the our test plan in the console got to the folder you saved the testplan and run the following:
+If you don't have java please install: https://www.java.com/en/download/help/download_options.xml
+To run the test plan in the console go to the folder you saved the testplan and run the following:
 jmeter -n -t vyngTestPlanJmeter20180422.jmx -l log.jtl
-To edit settings in jmeter:
+To edit settings in the jmeter gui:
 jmeter
-Then open the jmx file, follow instruction on the jmeter site to add APIs and change the number of threads.
+Then open the jmx file, follow instruction on the jmeter site to add APIs and change the number of threads, etc.
 https://jmeter.apache.org/usermanual/get-started.html
 
 Ab Testing
+To install:
+apt-get install apache2-utils
+To run use the following:
+ab -n <num_requests> -c <concurrency> <addr>:<port><path>
+e.g.
+ab -n 100 -c 10 -H 'accept: application/json' http://api-dev.vyng.me/api/media/channels
 
+Tsung Testing(http://tsung.erlang-projects.org/, Free )
+The instructions and tutorials for setting up were not well writtern.  The configuration is in xml and it ended up being not worth the effort figuring it out.  See github for setting and config.
+To install:
+brew install tsung
+To run:
+tsung -f vyngTsung.xml start
 
-Tsung Testing(http://tsung.erlang-projects.org/, Free,  )
-Not only allows you to test HTTP but also can send queries to all of below:
-XMPP (Jabber)
-PostgreSQL
-MySQL
-LDAP
-AMQP
-MQTT
+Blazemeter
+Non-free solution, https://www.blazemeter.com/pricing
+Very easy to setup could use config files from other Jmeter runs.
+See results of test
+https://a.blazemeter.com/app/?public-token=qXXPpo6FzD0M8X01Q4hn8Happ2qqz7gCAElq606Gq8SP91o5T8#/accounts/219951/workspaces/213876/projects/274858/masters/17540878/summary
 
-
-
-
-Other solutions not thirdy party that could be setup:
-  software side.  For the vyng api this could be setup in less then a month with detailed metrics.
+Other solutions not thirdy party that could be setup in probably less then a month with just developer time:
 First solution would be to setup a Go(could use this for reference, https://github.com/cmpxchg16/gobench) or Java application that sent multiple thread requests to the server for each of the API end points.  Then create metrics with this data or save to a csv spreadsheet for similar analysis as the above solution.  Again should take less then a month to setup with detailed metrics.  The nice part about this is setting memory and number of threads. 
 
- Batch scripts that sends curl request and records the time of each request to a csv file. Either another batch script or other code would parse the csv file and return metrics.  Instread of that we could open this csv in excel and use pivot tables, functions, macros or straight vba to calculate metrics.  The advantage of this is if the request data needed to be cleaned and you wanted to combine it with other timing data from the load balancer, mongo query times, and different code part times.  This solution takes developer time but should not cost anything on the  
+ Batch scripts that sends curl request and records the time of each request to a csv file. Either another batch script or other code would parse the csv file and return metrics.  Instead of that we could open this csv in excel and use pivot tables, functions, macros or straight vba to calculate metrics.  The advantage of this is if the request data needs to be cleaned and you wanted to combine or compare it with other timing data from the load balancer, mongo query times, or log times.  This solution takes developer time but should not cost anything on the  
