@@ -9,11 +9,13 @@ This is the actual dev server API for Vyng.  We have a Postman runner that tests
 Submit your recommendation for a load testing solution (3rd party services are acceptable) and an estimate of the costs to run the load tests.  Bonus points for actually setting up a prototype test of a few of the endpoints and reporting results.
 
 Solution:
+For this project, I looked at three 3rd party free solutions and one paid solution.  Two other solutions of creating your own could be used if needed.  JMeter came up the best as being free easy to setup, lots of documentation and able to do all API testing needs.  If JMeter didn't fit all the needs it was very easy to upgrade to Blazemeter using the JMeter setups.  See below for details.
+
 Free load testing using 3rd party applications.
 1. JMeter, https://jmeter.apache.org/, see JMeter Testing below for more info.
 2. ab http://httpd.apache.org/docs/2.2/programs/ab.html, 
 3. Tsung,http://tsung.erlang-projects.org/1/01/about/, 
-Non Free solution
+Paid online solution
 Blazemeter
 
 Recommend JMeter because easily setup for threads, timing, outputs, header info, https, stepping your requests and variables.  You can also connect it to a network of other computers to use there resources for testing as well.
@@ -51,7 +53,7 @@ The instructions and tutorials for setting up were not well writtern.  The confi
 To install:
 brew install tsung
 To run:
-tsung -f vyngTsung.xml start
+tsung -f vyngTsung.xml start 
 
 Blazemeter
 Non-free solution, https://www.blazemeter.com/pricing
