@@ -17,6 +17,7 @@ Free load testing using 3rd party applications.
 3. Tsung,http://tsung.erlang-projects.org/1/01/about/,
 
 Paid online solution
+
 Blazemeter
 
 Recommend JMeter because easily setup for threads, timing, outputs, header info, https, stepping your requests and variables.  You can also connect it to a network of other computers to use there resources for testing as well.
